@@ -1,19 +1,19 @@
 version: '3.1'
 
 services:
-#  music-bot:
-#    depends_on:
-#      - music-db
-#    build:
-#      context: .
-#    environment:
-#      BOT_NAME: 'test.Good_music_taste_bot'
-#      BOT_TOKEN: '5782512465:AAEoRUKU94W1XxzvK18r71lI6EvSfwYiUBo'
-#      BOT_DB_USERNAME: 'music_db_user'
-#      BOT_DB_PASSWORD: 'music_db_password'
-#    restart: always
+  music-bot:
+    depends_on:
+      - music-db
+    build:
+      context: .
+    environment:
+      BOT_NAME: 'test.Good_music_taste_bot'
+      BOT_TOKEN: '5782512465:AAEoRUKU94W1XxzvK18r71lI6EvSfwYiUBo'
+      BOT_DB_USERNAME: 'music_db_user'
+      BOT_DB_PASSWORD: 'music_db_password'
+    restart: always
   music-db:
-    image: mysql:8.0.15
+    image: mysql:latest
     restart: always
     environment:
       MYSQL_DATABASE: 'music_dbd'
