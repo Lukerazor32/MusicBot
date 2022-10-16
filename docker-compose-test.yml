@@ -13,7 +13,7 @@ services:
       BOT_DB_PASSWORD: 'music_db_password'
     restart: always
   music-db:
-    image: mysql:latest
+    image: mysql:8.0.30
     restart: always
     environment:
       MYSQL_DATABASE: 'music_dbd'

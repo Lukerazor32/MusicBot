@@ -16,10 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up MySQL
+    - name: Set up MySQLK
      uses: mirromutth/mysql-action@v1.1
      with:
-       mysql version: '8.0.15'
+       mysql version: '8.0.30'
        mysql database: 'music_dbd'
        mysql root password: 'admin'
        mysql user: 'music_db_user'
