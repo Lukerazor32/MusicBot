@@ -3,9 +3,11 @@ package com.example.telegram_bot.command;
 import com.example.telegram_bot.repository.entity.TelegramUser;
 import com.example.telegram_bot.service.SendBotMessageService;
 import com.example.telegram_bot.service.TelegramUserService;
+import com.example.telegram_bot.state.State;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import static com.example.telegram_bot.command.CommandName.*;
 
-public class StartCommand implements Command {
+public class StartCommand implements State {
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
@@ -14,6 +16,12 @@ public class StartCommand implements Command {
     public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegramUserService = telegramUserService;
+    }
+
+    @Override
+    public void startState(Update update) {
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), START_MESSAGE);
+        execute(update);
     }
 
     @Override
@@ -32,6 +40,11 @@ public class StartCommand implements Command {
                     telegramUserService.save(telegramUser);
                 }
         );
-        sendBotMessageService.sendMessage(chatId, START_MESSAGE);
+
+    }
+
+    @Override
+    public String nextState() {
+        return EXIT.getCommandName();
     }
 }

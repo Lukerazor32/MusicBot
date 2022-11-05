@@ -3,25 +3,23 @@ package com.example.telegram_bot.command;
 import com.example.telegram_bot.service.SendBotMessageService;
 import com.example.telegram_bot.state.State;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import static com.example.telegram_bot.command.CommandName.*;
+import static com.example.telegram_bot.command.CommandName.EXIT;
 
-public class UnknownCommand implements State {
-    public static final String UNKNOWN_MESSAGE = "Команда не распознана :(";
-
+public class EmptyCommand implements State {
     private final SendBotMessageService sendBotMessageService;
 
-    public UnknownCommand(SendBotMessageService sendBotMessageService) {
+    public EmptyCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
     }
 
     @Override
     public void startState(Update update) {
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), UNKNOWN_MESSAGE);
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), "Введите одну из команд");
     }
 
     @Override
     public void execute(Update update) {
-
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), "Введите одну из команд");
     }
 
     @Override

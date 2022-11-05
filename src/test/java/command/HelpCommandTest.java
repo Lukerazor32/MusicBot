@@ -1,7 +1,7 @@
 package command;
 
-import com.example.telegram_bot.command.Command;
 import com.example.telegram_bot.command.HelpCommand;
+import com.example.telegram_bot.state.State;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.example.telegram_bot.command.CommandName.HELP;
@@ -20,7 +20,7 @@ public class HelpCommandTest extends AbstractCommandTest {
     }
 
     @Override
-    Command getCommand() {
+    State getCommand() {
         return new HelpCommand(sendBotMessageService);
     }
 }

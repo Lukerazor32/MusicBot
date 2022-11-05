@@ -1,10 +1,10 @@
 package command;
 
 import com.example.telegram_bot.bot.Music_bot;
-import com.example.telegram_bot.command.Command;
 import com.example.telegram_bot.service.SendBotMessageService;
 import com.example.telegram_bot.service.SendBotMessageServiceImpl;
 import com.example.telegram_bot.service.TelegramUserService;
+import com.example.telegram_bot.state.State;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -21,7 +21,7 @@ abstract class AbstractCommandTest {
 
     abstract String getCommandMessage();
 
-    abstract Command getCommand();
+    abstract State getCommand();
 
     @Test
     public void shouldProperlyExecuteCommand() throws TelegramApiException {

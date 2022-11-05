@@ -1,7 +1,7 @@
 package command;
 
-import com.example.telegram_bot.command.Command;
 import com.example.telegram_bot.command.StatCommand;
+import com.example.telegram_bot.state.State;
 
 import static com.example.telegram_bot.command.CommandName.STAT;
 import static com.example.telegram_bot.command.StatCommand.STAT_MESSAGE;
@@ -18,7 +18,7 @@ public class StatCommandTest extends AbstractCommandTest {
     }
 
     @Override
-    Command getCommand() {
+    State getCommand() {
         return new StatCommand(sendBotMessageService, telegramUserService);
     }
 }

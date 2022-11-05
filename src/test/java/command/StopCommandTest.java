@@ -1,7 +1,7 @@
 package command;
 
-import com.example.telegram_bot.command.Command;
 import com.example.telegram_bot.command.StopCommand;
+import com.example.telegram_bot.state.State;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.example.telegram_bot.command.CommandName.STOP;
@@ -21,7 +21,7 @@ public class StopCommandTest extends AbstractCommandTest {
     }
 
     @Override
-    Command getCommand() {
+    State getCommand() {
         return new StopCommand(sendBotMessageService, telegramUserService);
     }
 }

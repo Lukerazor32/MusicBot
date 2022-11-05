@@ -1,7 +1,7 @@
 package command;
 
-import com.example.telegram_bot.command.Command;
 import com.example.telegram_bot.command.StartCommand;
+import com.example.telegram_bot.state.State;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.example.telegram_bot.command.CommandName.START;
@@ -21,7 +21,7 @@ class StartCommandTest extends AbstractCommandTest {
     }
 
     @Override
-    Command getCommand() {
+    State getCommand() {
         return new StartCommand(sendBotMessageService, telegramUserService);
     }
 }

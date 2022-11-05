@@ -1,7 +1,7 @@
 package command;
 
-import com.example.telegram_bot.command.Command;
 import com.example.telegram_bot.command.UnknownCommand;
+import com.example.telegram_bot.state.State;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.example.telegram_bot.command.UnknownCommand.UNKNOWN_MESSAGE;
@@ -20,7 +20,7 @@ public class UnknownCommandTest extends AbstractCommandTest {
     }
 
     @Override
-    Command getCommand() {
+    State getCommand() {
         return new UnknownCommand(sendBotMessageService);
     }
 }

@@ -1,11 +1,12 @@
 package com.example.telegram_bot.command;
 
 import com.example.telegram_bot.service.SendBotMessageService;
+import com.example.telegram_bot.state.State;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import static com.example.telegram_bot.command.CommandName.*;
 
-public class HelpCommand implements Command {
+public class HelpCommand implements State {
     private final SendBotMessageService sendBotMessageService;
 
     public final static String HELP_MESSAGE = String.format("<b>Доступные команды:</b>" +
@@ -23,7 +24,17 @@ public class HelpCommand implements Command {
     }
 
     @Override
-    public void execute(Update update) {
+    public void startState(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), HELP_MESSAGE);
+    }
+
+    @Override
+    public void execute(Update update) {
+
+    }
+
+    @Override
+    public String nextState() {
+        return EXIT.getCommandName();
     }
 }
